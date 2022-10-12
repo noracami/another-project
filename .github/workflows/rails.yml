@@ -41,7 +41,7 @@ jobs:
           rake db:create db:migrate
       - name: Run tests
         env:
-          POSTGRES_HOST: localhost
+          POSTGRES_HOST: postgres
           PGUSER: postgres
           POSTGRES_PASSWORD: postgres
           # 獲得分發的端口
