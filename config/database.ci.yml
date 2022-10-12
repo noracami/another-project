@@ -2,6 +2,6 @@ test:
   adapter: postgresql
   encoding: unicode
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
-  database: rails_github_actions_test
+  database: postgres
   username: <%= ENV['PGUSER'] %>
   password: <%= ENV['POSTGRES_PASSWORD'] %>
