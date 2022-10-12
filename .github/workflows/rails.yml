@@ -33,11 +33,11 @@ jobs:
       - name: Setup test database
         env:
           RAILS_ENV: test
-          POSTGRES_HOST: localhost
+          POSTGRES_HOST: postgres
           PGUSER: postgres
           POSTGRES_PASSWORD: postgres
         run: |
-          # cp config/database.ci.yml config/database.yml
+          cp config/database.ci.yml config/database.yml
           rake db:create db:migrate
       - name: Run tests
         env:
