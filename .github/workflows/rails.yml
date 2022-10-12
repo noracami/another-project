@@ -10,6 +10,7 @@ jobs:
       postgres:
         image: postgres
         env:
+          POSTGRES_DB: rails_github_actions_test
           POSTGRES_PASSWORD: postgres
         options: >-
           --health-cmd pg_isready
@@ -41,10 +42,10 @@ jobs:
           rake db:create db:migrate
       - name: Run tests
         env:
+          RAILS_ENV: test
           POSTGRES_HOST: postgres
           PGUSER: postgres
           POSTGRES_PASSWORD: postgres
           # 獲得分發的端口
           POSTGRES_PORT: ${{ job.services.postgres.ports[5432] }}
-          RAILS_ENV: test
         run: rspec
