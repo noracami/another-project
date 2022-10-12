@@ -35,7 +35,7 @@ jobs:
       - name: Setup test database
         env:
           RAILS_ENV: test
-          POSTGRES_HOST: postgres
+          POSTGRES_HOST: localhost
           PGUSER: postgres
           POSTGRES_PASSWORD: postgres
         run: |
@@ -44,7 +44,7 @@ jobs:
       - name: Run tests
         env:
           RAILS_ENV: test
-          POSTGRES_HOST: postgres
+          POSTGRES_HOST: localhost
           PGUSER: postgres
           POSTGRES_PASSWORD: postgres
           # 獲得分發的端口
