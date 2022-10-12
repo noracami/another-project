@@ -10,7 +10,6 @@ jobs:
       postgres:
         image: postgres
         env:
-          POSTGRES_DB: postgres
           POSTGRES_USER: postgres
           POSTGRES_PASSWORD: postgres
         options: >-
@@ -27,6 +26,7 @@ jobs:
         uses: actions/setup-ruby@v1
         with:
           ruby-version: 3.1.2
+          bundler-cache: true
       - name: Install dependencies
         run: |
           sudo apt-get -yqq install libpq-dev build-essential libcurl4-openssl-dev
@@ -36,7 +36,7 @@ jobs:
         env:
           RAILS_ENV: test
           POSTGRES_HOST: localhost
-          PGUSER: postgres
+          POSTGRES_USER: postgres
           POSTGRES_PASSWORD: postgres
         run: |
           cp config/database.ci.yml config/database.yml
@@ -45,7 +45,7 @@ jobs:
         env:
           RAILS_ENV: test
           POSTGRES_HOST: localhost
-          PGUSER: postgres
+          POSTGRES_USER: postgres
           POSTGRES_PASSWORD: postgres
           # 獲得分發的端口
           POSTGRES_PORT: ${{ job.services.postgres.ports[5432] }}
